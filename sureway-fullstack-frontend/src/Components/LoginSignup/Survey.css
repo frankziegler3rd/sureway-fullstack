@@ -1,0 +1,63 @@
+.survey-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .question-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .options-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .option {
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    background-color: #950d7d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+.survey-title {
+    color: #ffffff; /* White color */
+    font-weight: bold; /* Bold text */
+    font-size: 40px; /* Adjust the font size as needed */
+    margin-bottom: 20px; /* Add some spacing at the bottom */
+  }
+  
+  .option {
+    /* your existing option styles */
+    cursor: pointer; /* Add a pointer cursor to indicate the option is clickable */
+    margin-bottom: 10px; /* Add some spacing between options */
+    padding: 10px; /* Add padding around options */
+  }
+  
+  .selected {
+    background-color: #3c009d; /* Dark purple background for selected option */
+    color: #ffffff; /* White text color for selected option */
+    border-radius: 6px; /* Optional: Add rounded corners for selected option */
+  }
+  
