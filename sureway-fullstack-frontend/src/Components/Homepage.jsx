@@ -1,11 +1,14 @@
 // Frank Ziegler, SE Team 4
+//Shyaam Darji
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Homepage.css';
+import Navbar from '../Components/LoginSignup/Navbar';
 
 function HomePage() {
   return (
     <div>
+      <Navbar /> {/* Include the Navbar component here */}
       <h1>Welcome to Sureway!</h1>
       <p>We pride ourselves on being the sure way to survey. Do you have a staff you want to take anonymous feedback from? 
           Do you feel the burning desire to administer a survey that tells people which Chicago PD character they are? Are you
