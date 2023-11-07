@@ -35,9 +35,16 @@ const Survey = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+  // Check if all questions have an answer selected
+  for (const question in answers) {
+    if (!answers[question]) {
+      alert('Please answer all questions before submitting.');
+      return; // Prevent submission if any question is unanswered by leaving function
+    }
     // Handle the submitted answers, e.g., send them to an API or process them as needed
     console.log('Survey answers submitted:', answers);
-
+  }
     const optionCounts = {
       A: 0,
       B: 0,
