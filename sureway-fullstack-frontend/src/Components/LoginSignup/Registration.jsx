@@ -56,13 +56,13 @@ const Registration = () => {
   };
 
   const labelStyle = {
-    color: '#000', // black color for labels
+    color: '#fff', // White color for labels
     fontSize: '20px', // Larger font size for labels
     marginBottom: '5px', // Added margin at the bottom
   };
 
   const registerTitleStyle = {
-    color: '#000', // black color for the "Register" text
+    color: '#fff', // White color for the "Register" text
     fontSize: '40px', // Larger font size for the "Register" text
     fontWeight: '700', // Bold text
     marginBottom: '20px', // Added margin at the bottom

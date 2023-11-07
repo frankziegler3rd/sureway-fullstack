@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Survey.css'; 
 
 const Survey = () => {
+  // Use the useHistory hook to navigate to the results page
+  const navigate = useNavigate();
   const [answers, setAnswers] = useState({
     q1: '',
     q2: '',
@@ -15,6 +18,13 @@ const Survey = () => {
     q10: ''
   });
 
+  // Message that will be used to display survey results
+  const [showMessage, setShowMessage] = useState(false);
+  // Store Survey Result
+  const [surveyResult, setSurveyResult] = useState('');
+  
+ 
+
   const handleInputChange = (question, answer) => {
     setAnswers({
       ...answers,
@@ -27,7 +37,52 @@ const Survey = () => {
     e.preventDefault();
     // Handle the submitted answers, e.g., send them to an API or process them as needed
     console.log('Survey answers submitted:', answers);
-  };
+
+    const optionCounts = {
+      A: 0,
+      B: 0,
+      C: 0,
+      D: 0,
+    };
+
+    for (const question in answers) {
+      const answer = answers[question];
+      if (answer) {
+        optionCounts[answer]++;
+      }
+    }
+
+    // Find the most selected option letter
+  // Find the most selected option letter
+  const mostSelectedOption = Object.keys(optionCounts).reduce((a, b) =>
+    optionCounts[a] > optionCounts[b] ? a : b
+  );
+    // Set the Result
+  let surveyResult = '';
+  switch (mostSelectedOption) {
+    case 'A':
+      surveyResult = "Based on your interest in scientific subjects, problem-solving skills, and analytical thinking, majors like Physics, Engineering, Computer Science, or Mathematics might be suitable for you.";
+      break;
+    case 'B':
+      surveyResult = "Based on your interest in literature, arts, and creativity, majors like Literature, Fine Arts, Graphic Design, or Creative Writing might be suitable for you.";
+      break;
+    case 'C':
+      surveyResult = "Based on your interest in social studies, humanities, and critical thinking, majors like History, Political Science, Sociology, or Philosophy might be suitable for you.";
+      break;
+    case 'D':
+      surveyResult = "Based on your diverse interests and skills, majors like Liberal Arts, Business Administration, Communications, or Psychology might be suitable for you.";
+      break;
+    default:
+      surveyResult = "Based on your answers, we couldn't determine a suitable major for you. Please consult with a career advisor for more guidance.";
+  }
+
+  // Display Survey Results
+  setSurveyResult(surveyResult);
+  setShowMessage(true);
+
+  // navigate to the results page passing surveyResult as state
+  navigate('results', { state: { surveyResult: surveyResult } });
+};
 
   return (
     <div className="survey-container">
@@ -132,7 +187,14 @@ const Survey = () => {
         </div>
       </div>
 
+
       <button className="submit-button" onClick={handleSubmit}>Submit</button>
+      {showMessage && ( // Display Survey Results
+        <div className="message">   
+        {surveyResult}   
+          {/* You can also display the user's answers here */}
+        </div>
+      )}
     </div>
   );
 };

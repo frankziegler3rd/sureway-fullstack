@@ -8,26 +8,22 @@ and the Registration component will be rendered when the path is /registration.
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginSignup from './LoginSignup/LoginSignup';
-import Registration from './LoginSignup/Registration';
-import Dashboard from './LoginSignup/Dashboard';
-import Survey from './LoginSignup/Survey';
-import HomePage from './Homepage';
-import SurveyResults from './LoginSignup/SurveyResults';
-
+import LoginSignup from './LoginSignup';
+import Registration from './Registration';
+import Dashboard from './Dashboard';
+import Survey from './Survey';
+import SurveyResults from './SurveyResults';
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginSignup />} />
+        <Route path="/" element={<LoginSignup />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/survey" element={<Survey />} />
-        <Route path="/survey/results" element={<SurveyResults />} />
+        <Route path="/results" element={<SurveyResults />} />
       </Routes>
     </Router>
   );
 };
-
 export default AppRouter;
