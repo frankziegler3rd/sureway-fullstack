@@ -141,6 +141,7 @@ useEffect(() => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    width: '1200px',
     justifyContent: 'center', // Vertically center the content
     height: '100vh', // Use the full height of the viewport
     backgroundColor: '#f5f5f5', // Light gray background color
@@ -150,7 +151,7 @@ useEffect(() => {
   const inputStyle = {
     margin: '10px 0',
     padding: '10px',
-    width: '100%',
+    width: '250px',
     fontSize: '18px', // Increased font size
     fontWeight: 'bold', // Bold text
     border: '1px solid #ccc', // Add a border

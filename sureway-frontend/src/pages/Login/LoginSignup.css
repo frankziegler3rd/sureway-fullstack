@@ -1,5 +1,6 @@
 /*
 Kyle Wallace
+Frank Ziegler
 SE Team 4
 
 This file handles all of the visuals for our webpage such as font, color, margins, etc
@@ -11,16 +12,35 @@ This file handles all of the visuals for our webpage such as font, color, margin
 
     The width of 600px creats a box around the signup area
 */
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../../assets/styles/Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf') format('opentype'); /* Adjust the font file extension and path accordingly */
+}
+
 .container{
+    font-family: 'Satoshi';
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: auto;
-    margin-top: 200px;
-    width: 600px;
+    margin-top: 100px;
+    width: 1200px;
+    align-items: center;
+    justify-content: center;
     background: #fff;
     padding-bottom: 30px;
     position: relative;
     height: 550px;
+}
+
+.image-section {
+    width: 50%;
+    /* Other styles for the image section */
+}
+  
+.form-section {
+    width: 50%;
+    /* Other styles for the form section */
 }
 
 /*
@@ -34,14 +54,13 @@ This file handles all of the visuals for our webpage such as font, color, margin
     gap: 9px;
     width: 100%;
     margin-top: 30px;
-
 }
 
 /*
     This adjust the font size of the "Sign up" and turns the color to a Purple
 */
 .text{
-    color: #3c009d;
+    color: #000;
     font-size: 40px;
     font-weight: 700;
 }
