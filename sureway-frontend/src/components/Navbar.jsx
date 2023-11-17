@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // If you are using React Router
-import logo from '../assets/images/Sureway copy 2.png';
+import logo from '../assets/images/Sureway copy 3.png';
 import jsCookie from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
 const navbarStyle = {
-    backgroundColor: '#333',
-    color: 'white',
+    backgroundColor: '#F6F5F0',
     padding: '5px 10px',
-    display: 'flex', // Make the navbar a flex container
-    alignItems: 'center', // Vertically center items
-};
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end', // Align items to the right
+    position: 'fixed',
+    top: '0',
+    width: '100%',
+    zIndex: '1000',
+    // Add other styles as needed
+  };
 
 const linkContainerStyle = {
     marginLeft: 'auto', // This will push the links to the right
@@ -18,9 +23,17 @@ const linkContainerStyle = {
   };
 
 const linkStyle = {
-    color: 'white',
+    color: 'black',
     textDecoration: 'none',
     marginRight: '20px'
+};
+
+const signUpLinkStyle = {
+    ...linkStyle,
+    padding: '10px 20px', // Add padding for the oval shape
+    borderRadius: '50px', // Create an oval shape
+    border: '1px solid black', // Border styling
+    backgroundColor: '#F2DEFF',
 };
 
 const logoStyle = {
@@ -70,6 +83,9 @@ const Navbar = () => {
                 <li style={{ display: 'inline' }}>
                     <Link to="/" style={linkStyle}>Home</Link>
                 </li>
+                <li style={{ display: 'inline' }}>
+                    <Link to="/" style={linkStyle}>About</Link>
+                </li>
                 {authToken ? (
                 <li style={{ display: 'inline' }}>
                     <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
@@ -113,7 +129,7 @@ const Navbar = () => {
                 )}
                 {authToken ? null : (
                 <li style={{ display: 'inline' }}>
-                    <Link to="/registration" style={linkStyle}>Sign Up</Link>
+                    <Link to="/registration" style={signUpLinkStyle}>Sign Up</Link>
                 </li>
                 )}
             </ul>
