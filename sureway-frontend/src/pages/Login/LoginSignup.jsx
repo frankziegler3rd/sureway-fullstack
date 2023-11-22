@@ -13,6 +13,7 @@ import password_icon from '../../assets/images/password.png';
 import axios from "axios";
 import Dashboard from "../Dashboard/Dashboard.jsx";
 import jsCookie from "js-cookie";
+import bgimg from '../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg'
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Login");
@@ -44,9 +45,12 @@ const handleLogin = async () => {
 
     return (
         <div className='container'>
+            <div className="image-section">
+                <img src={bgimg} alt="Background" />
+            </div>
+            <div className="form-section">
             <div className="header">
                 <div className="text">{action}</div>
-                <div className="underline"></div>
             </div>
 
             <div className="inputs">
@@ -83,6 +87,7 @@ const handleLogin = async () => {
 
             {action === "Sign Up" && <Registration />}
             {loginError && <div className="error-message">{loginError}</div>}
+        </div>
         </div>
     );
 };
