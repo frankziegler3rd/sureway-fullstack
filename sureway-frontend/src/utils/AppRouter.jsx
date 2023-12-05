@@ -14,7 +14,9 @@ import Registration from '../pages/Registration.jsx';
 import Dashboard from '../pages/Dashboard/Dashboard.jsx';
 import Survey from '../pages/Survey/Survey.jsx';
 import Homepage from '../pages/Homepage/Homepage.jsx';
-import SurveyResults from '../pages/SurveyResults/SurveyResults';
+import SurveyResults from '../pages/SurveyResults/SurveyResults.jsx';
+import CreateSurvey from '../pages/CreateSurvey/CreateSurvey.jsx';
+import PageNotFound from '../pages/PageNotFound.jsx';
 
 const AppRouter = () => {
   return (
@@ -26,6 +28,8 @@ const AppRouter = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/survey" element={<Survey />} />
         <Route path="/survey/results" element={<SurveyResults />} />
+        <Route path="/create-survey" element={<CreateSurvey />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   );
