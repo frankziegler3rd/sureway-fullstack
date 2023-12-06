@@ -18,28 +18,71 @@ This file handles all of the visuals for our webpage such as font, color, margin
     src: url('../../assets/styles/Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf') format('opentype'); /* Adjust the font file extension and path accordingly */
 }
 
-.container{
+.container {
     font-family: 'Satoshi';
     display: flex;
     flex-direction: row;
-    margin: auto;
-    margin-top: 100px;
-    width: 1200px;
-    align-items: center;
     justify-content: center;
+    align-items: stretch;
+    width: 90%;
+    max-width: 1000px; /* Set maximum width */
+    height: 600px;
     background: #fff;
-    padding-bottom: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .left-subcontainer {
     position: relative;
-    height: 550px;
+    flex: 1; /* Occupy remaining space */
+    display: flex; /* Allow children elements to fill the height */
+    flex-direction: column;
+    background-image: url('../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg');
+    background-size: cover; /* Adjust to 'contain' if needed */
+    background-position: center;
+    /* Styles for left sub-container */
+  }
+
+  .logo {
+    position: absolute;
+    top: 50%; /* Move the logo down by 50% of the container's height */
+    left: 50%; /* Move the logo right by 50% of the container's width */
+    transform: translate(-50%, -50%); /* Center the logo precisely */
+    z-index: 1;
 }
+  
+  .right-subcontainer {  
+    flex: 1;
+    display: flex; /* Allow children elements to fill the height */
+    flex-direction: column;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center;
+  }
+
+  .additional-text {
+    /* Styles for the additional text */
+    margin-bottom: 15px; /* Adjust spacing between text and input boxes */
+    color: #7f7e80;
+  }
 
 .image-section {
-    width: 50%;
-    /* Other styles for the image section */
+    width: 100%;
+    height: 100vh; /* Ensure the image section takes the full viewport height */
+    background-image: url('../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg');
+    background-size: 100% 100%; /* Adjust to 'contain' if needed */
+    background-position: center;
+    margin: 0;
+    padding: 0;
 }
   
 .form-section {
     width: 50%;
+    text-align: left;
     /* Other styles for the form section */
 }
 
@@ -50,10 +93,10 @@ This file handles all of the visuals for our webpage such as font, color, margin
 .header{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     gap: 9px;
     width: 100%;
-    margin-top: 30px;
+    
 }
 
 /*
@@ -76,7 +119,6 @@ This file handles all of the visuals for our webpage such as font, color, margin
     Sets a gap between entry fields
 */
 .inputs{
-    margin-top: 55px;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -89,9 +131,10 @@ This file handles all of the visuals for our webpage such as font, color, margin
     display: flex;
     align-items: center;
     margin: auto;
-    width: 480px;
-    height: 80px;
-    background: #eaeaea;
+    width: 250px;
+    height: 45px;
+    background: transparent;
+    border: 1px solid #ccc;
     border-radius: 6px;
 
 }
@@ -108,11 +151,11 @@ This file handles all of the visuals for our webpage such as font, color, margin
 */
 .input input{
     height: 50px;
-    width: 400px;
+    width: 200px;
     background: transparent;
     border: none;
     outline: none;
-    color: #797979;
+    color: #000;
     font-size: 19px;
 
 }
@@ -132,52 +175,50 @@ This file handles all of the visuals for our webpage such as font, color, margin
     Moves "Forgot password" to the right and changes font color
 */
 .forgot-password{
-    padding-left: 65px;
-    margin-top: 27px;
-    color: #797979;
-    font-size: 18px;
+    margin-top: 18px;
+    color: #8c8c8c;
+    font-size: 15px;
 }
 
 /*
     Changes "click here" to purple color
 */
 .forgot-password span{
-    color: #4c00b4;
+    color: #000;
     cursor: pointer;
 }
 
-/*
-    Moves signup/login to the same line and centers it on page
-*/
-.submit-container{
+.submit-container {
     display: flex;
-    gap: 30px;
-    margin: 60px auto;
+    justify-content: center; /* Center the button horizontally */
+    margin: 30px auto;
 }
 
-/*
-    Creates bubbles around bottom "sign up"/"login" buttons and does some font size adjustments
-*/
-.submit{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 220px;
+.submit {
+    /* Styles for the button */
+    width: 250px;
     height: 59px;
     color: #fff;
-    background: #950d7d;
-    border-radius: 50px;
+    background: #c2a4fc;
+    border-radius: 10px;
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
+    border: none;
 }
 
-/*
-    This is the action button for "Sign Up"
-    currently it is highlighted in pink and is referenced in the 
-    LoginSignup.jsx in the code that says action... submit gray
-*/
-.gray{
+.gray {
+    /* Styles for the grayed-out button */
     background: #eaeaea;
     color: #676767;
 }
+
+.not-a-user {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.not-a-user a {
+    color: purple; /* Change link color */
+    text-decoration: underline; /* Add underline to the link */
+}
+

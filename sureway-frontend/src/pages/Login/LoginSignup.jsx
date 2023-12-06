@@ -13,7 +13,8 @@ import password_icon from '../../assets/images/password.png';
 import axios from "axios";
 import Dashboard from "../Dashboard/Dashboard.jsx";
 import jsCookie from "js-cookie";
-import bgimg from '../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg'
+import bgimg from '../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg';
+import logo from '../../assets/images/Sureway copy.png';
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Login");
@@ -44,18 +45,21 @@ const handleLogin = async () => {
 }
 
     return (
-        <div className='container'>
-            <div className="image-section">
-                <img src={bgimg} alt="Background" />
-            </div>
+        
+            <div className="container">
+                <div class="left-subcontainer">
+                    <div class="logo">
+                        <img src={logo} alt="Logo" />
+                    </div>
+                </div>
+            <div class="right-subcontainer">
             <div className="form-section">
             <div className="header">
-                <div className="text">{action}</div>
+                <div className="text">Login</div>
             </div>
-
+            <p class="additional-text">Welcome back! Please log into your account.</p>
             <div className="inputs">
                 <div className="input">
-                    <img src={user_icon} alt="User Icon" />
                     <input
                     type="text"
                     placeholder="Name"
@@ -64,7 +68,6 @@ const handleLogin = async () => {
                 />
                 </div>
                 <div className="input">
-                    <img src={password_icon} alt="Password Icon" />
                     <input
                     type="password"
                     placeholder="Password"
@@ -77,18 +80,19 @@ const handleLogin = async () => {
             <div className="forgot-password"><span>Forgot Password?</span></div>
 
             <div className='submit-container'>
-                <Link to="/registration" className={action === "Sign Up" ? "submit gray" : "submit"}>
-                    Sign Up
-                </Link>
-                <button onClick={handleLogin} className={action === "Login" ? "submit gray" : "submit"}>
-                    Login
-                </button>
+            <button onClick={handleLogin} className="submit">
+                Login
+            </button>
             </div>
-
             {action === "Sign Up" && <Registration />}
             {loginError && <div className="error-message">{loginError}</div>}
+            <p className="not-a-user">
+                Not a user? <a href="/registration">Sign up!</a>
+            </p>
         </div>
         </div>
+        </div>
+        
     );
 };
 
