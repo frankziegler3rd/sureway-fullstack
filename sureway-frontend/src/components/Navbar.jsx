@@ -28,12 +28,17 @@ const linkStyle = {
     marginRight: '20px'
 };
 
-const signUpLinkStyle = {
+const signUpButtonStyle = {
     ...linkStyle,
     padding: '10px 20px', // Add padding for the oval shape
-    borderRadius: '50px', // Create an oval shape
-    border: '1px solid black', // Border styling
-    backgroundColor: '#F2DEFF',
+    borderRadius: '5px', // Create an oval shape
+    border: 'none', // Border styling
+    backgroundColor: '#8E72D2',
+    display: 'inline-block', // Ensure it's displayed as a block
+    textDecoration: 'none', // Remove default link underline
+    color: 'white', // Set text color
+    textAlign: 'center', // Center text horizontally
+    lineHeight: 'normal', // Adjust line height if needed
 };
 
 const logoStyle = {
@@ -129,7 +134,7 @@ const Navbar = () => {
                 )}
                 {authToken ? null : (
                 <li style={{ display: 'inline' }}>
-                    <Link to="/registration" style={signUpLinkStyle}>Sign Up</Link>
+                    <Link to="/registration" style={signUpButtonStyle}>Sign Up</Link>
                 </li>
                 )}
             </ul>
