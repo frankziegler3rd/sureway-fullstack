@@ -2,10 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar.jsx';
-import image1 from '../../assets/images/mike-kononov-lFv0V3_2H6s-unsplash.jpg'
+import image1 from '../../assets/images/Get answers with surveys.png';
 import image2 from '../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg'
 import TeamMemberCard from '../../components/TeamMemberCard.jsx';
 import Footer from '../../components/Footer.jsx';
+import image3 from '../../assets/images/get started with sureway.png';
 
 function HomePage() {
 
@@ -20,7 +21,6 @@ function HomePage() {
     width: '100%',
     height: '40%',
     marginTop: '10px',
-    borderRadius: '5px',
   };
 
   const imageStyle2 = {
@@ -29,9 +29,41 @@ function HomePage() {
     marginTop: '10px',
   };
 
+  const buttonContainerStyle1 = {
+    position: 'absolute',
+    bottom: '112px', // Adjust button position from the bottom
+    left: '78px', // Adjust button position from the left
+  };
+
+  const buttonContainerStyle2 = {
+    position: 'absolute',
+    bottom: '40px', // Adjust button position from the bottom
+    left: '115px', // Adjust button position from the left
+  };
+
+  const overlayButtonStyle1 = {
+    backgroundColor: '#fff',
+    color: 'black',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    /* Add more styles as needed */
+  };
+
+  const overlayButtonStyle2 = {
+    backgroundColor: '#8E71D1',
+    color: 'white',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    /* Add more styles as needed */
+  };
+
   const titleStyle = {
     color: 'black',
-    fontSize: '64px',
+    fontSize: '48px',
     fontWeight: 'bold',
     marginBottom: '10px',
   };
@@ -39,7 +71,7 @@ function HomePage() {
   const headerStyle = {
     fontSize: '30px',
     color: 'black',
-    marginTop: '60px',
+    marginTop: '20px',
   }
 
   const subTitleTextStyle = {
@@ -98,8 +130,8 @@ function HomePage() {
     },
     {
       name: 'Sathwick Baluspati',
-      position: '?',
-      credentials: 'We are actually not sure if he is still in this class.',
+      position: '',
+      credentials: '',
     },
   ];
 
@@ -113,12 +145,13 @@ function HomePage() {
 
     <div>
       <Navbar />
-      <div style={containerStyle}>
-        <div style={titleStyle}>
-          THE WORLD'S LEADING WEB-BASED SURVEY SYSTEM, WELCOME TO SUREWAY
+      <div style={{ position: 'relative' }}>
+          <img src={image1} alt="Background" style={imageStyle1} />
+          <div style={buttonContainerStyle1}>
+            <button style={overlayButtonStyle1}>Sign up free</button>
+          </div>
         </div>
-        <h1 style={subTitleTextStyle}>the sure way to survey!</h1>
-        <img src={image1} alt="Survey Image" style={imageStyle1} />
+      <div style={containerStyle}>
         <div style={{ paddingLeft: '20px' }}>
         <h1 style={headerStyle}>HOW WE WORK</h1>
         <div style={subHeaderStyle}>
@@ -147,6 +180,17 @@ function HomePage() {
         analytics and fostering inclusivity in survey accessibility. By revolutionizing the survey experience, we aim to make a lasting impact on how organizations 
         collect valuable data and engage with their audiences.
         </p>
+        </div>
+        </div>
+
+        <div style={{ position: 'relative' }}>
+          <img src={image3} alt="Background" style={imageStyle1} />
+          <div style={buttonContainerStyle2}>
+            <button style={overlayButtonStyle2}>Learn more</button>
+          </div>
+        </div>
+        
+        <div style={containerStyle}>
         <h1 style={headerStyle}>OUR TEAM</h1>
         <div style={teamCardsStyle}>
         {teamMembers.map((member, index) => (
@@ -159,7 +203,6 @@ function HomePage() {
         ))}
       </div>
         </div>
-      </div>
       <Footer />
     </div>
 );
