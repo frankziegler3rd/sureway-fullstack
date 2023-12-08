@@ -42,19 +42,11 @@ This file handles all of the visuals for our webpage such as font, color, margin
     flex: 1; /* Occupy remaining space */
     display: flex; /* Allow children elements to fill the height */
     flex-direction: column;
-    background-image: url('../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg');
+    background-image: url('../../assets/images/Sureway\ surveys\ \(1\).png');
     background-size: cover; /* Adjust to 'contain' if needed */
     background-position: center;
     /* Styles for left sub-container */
   }
-
-  .logo {
-    position: absolute;
-    top: 50%; /* Move the logo down by 50% of the container's height */
-    left: 50%; /* Move the logo right by 50% of the container's width */
-    transform: translate(-50%, -50%); /* Center the logo precisely */
-    z-index: 1;
-}
   
   .right-subcontainer {  
     flex: 1;
@@ -83,7 +75,8 @@ This file handles all of the visuals for our webpage such as font, color, margin
 .form-section {
     width: 50%;
     text-align: left;
-    /* Other styles for the form section */
+    position: relative;
+    padding-bottom: 60px;
 }
 
 /*
@@ -162,14 +155,23 @@ This file handles all of the visuals for our webpage such as font, color, margin
 
 .error-message {
     color: red;
-    text-align: center;
+    text-align: left;
     position: absolute;
     bottom: 10px;
     left: 0;
-    right: 0;
     width: auto;
-    font-weight: bold; /* Add this line to make the text bold */
+    font-weight: bold;
+    padding-top: 60px;
 }
+
+.hazard-icon {
+    display: inline-block;
+    width: 20px; /* Adjust icon size as needed */
+    height: 20px;
+    margin-right: 5px; /* Add margin for spacing between the icon and text */
+    /* Other styles for the icon */
+}
+
 
 /*
     Moves "Forgot password" to the right and changes font color
