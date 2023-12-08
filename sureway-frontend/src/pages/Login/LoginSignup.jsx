@@ -15,6 +15,7 @@ import Dashboard from "../Dashboard/Dashboard.jsx";
 import jsCookie from "js-cookie";
 import bgimg from '../../assets/images/visax-N7PFDwM0AYI-unsplash.jpg';
 import logo from '../../assets/images/Sureway copy.png';
+import hazardicon from '../../assets/images/hazardIcon.png';
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Login");
@@ -47,52 +48,50 @@ const handleLogin = async () => {
     return (
         
             <div className="container">
-                <div class="left-subcontainer">
-                    <div class="logo">
-                        <img src={logo} alt="Logo" />
-                    </div>
-                </div>
+                <div class="left-subcontainer"></div>
             <div class="right-subcontainer">
-            <div className="form-section">
-            <div className="header">
-                <div className="text">Login</div>
-            </div>
-            <p class="additional-text">Welcome back! Please log into your account.</p>
-            <div className="inputs">
-                <div className="input">
-                    <input
-                    type="text"
-                    placeholder="Name"
-                    value={credentials.username}
-                    onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-                />
-                </div>
-                <div className="input">
-                    <input
-                    type="password"
-                    placeholder="Password"
-                    value={credentials.password}
-                    onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-                />
-                </div>
-            </div>
+                <div className="form-section">
+                    <div className="header">
+                        <div className="text">Login</div>
+                    </div>
+                    <p class="additional-text">Welcome back! Please log into your account.</p>
+                    <div className="inputs">
+                        <div className="input">
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={credentials.username}
+                                onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+                            />
+                        </div>
+                        <div className="input">
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={credentials.password}
+                                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                            />
+                        </div>
+                    </div>
 
-            <div className="forgot-password"><span>Forgot Password?</span></div>
+                    <div className="forgot-password"><span>Forgot Password?</span></div>
 
-            <div className='submit-container'>
-            <button onClick={handleLogin} className="submit">
-                Login
-            </button>
+                    <div className='submit-container'>
+                        <button onClick={handleLogin} className="submit">
+                            Login
+                        </button>
+                    </div>
+                    <p className="not-a-user">
+                        Not a user? <a href="/registration">Sign up!</a>
+                    </p>
+                    {action === "Sign Up" && <Registration />}
+                    {loginError && <div className="error-message">
+                        <img src={hazardicon} alt="Hazard Icon" className="hazard-icon" />
+                        {loginError}
+                    </div>}
+                </div>
             </div>
-            {action === "Sign Up" && <Registration />}
-            {loginError && <div className="error-message">{loginError}</div>}
-            <p className="not-a-user">
-                Not a user? <a href="/registration">Sign up!</a>
-            </p>
-        </div>
-        </div>
-        </div>
-        
+        </div>        
     );
 };
 
