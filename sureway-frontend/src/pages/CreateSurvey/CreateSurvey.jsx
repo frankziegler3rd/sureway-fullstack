@@ -5,12 +5,17 @@ function CreateSurvey() {
   const [surveyData, setSurveyData] = useState({
     title: "",
     questions: [],
-    results: ["", "", "", "", ""],
+    resultA: "",
+    resultB: "",
+    resultC: "",
+    resultD: "",
+    resultE: "",
   });
-
+ 
   const handleTitleChange = (event) => {
     setSurveyData({ ...surveyData, title: event.target.value });
   };
+
 
   const handleQuestionChange = (event, index) => {
     const { name, value } = event.target;
@@ -28,9 +33,8 @@ function CreateSurvey() {
 
   const handleResultChange = (event, resultIndex) => {
     const { value } = event.target;
-    const results = [...surveyData.results];
-    results[resultIndex] = value;
-    setSurveyData({ ...surveyData, results });
+    const resultKey = `result${String.fromCharCode(65 + resultIndex)}`;
+    setSurveyData({ ...surveyData, [resultKey]: value });
   };
 
   const handleAddQuestion = () => {
@@ -45,19 +49,16 @@ function CreateSurvey() {
   };
 
   const handleSubmit = async (e) => {
-    // Submit survey data to backend API
-
-    e.preventDefault(); // Prevent form from refreshing page to check logs
-    console.log('Survey Data:', surveyData); // Contains Title, Results, Questions with held array of answers inside
+    e.preventDefault();
+    console.log('Survey Data:', surveyData);
     try {
       const response = await axios.post('http://localhost:8080/create-survey', surveyData);
       console.log('Survey submitted:', response.data);
-      // Handle success, show a success message, or perform other actions
     } catch (error) {
       console.error('Error submitting survey:', error);
-      // Handle error, show an error message, etc.
     }
   };
+
 
   return (
     <div>
@@ -67,6 +68,18 @@ function CreateSurvey() {
           Survey Title:
           <input type="text" value={surveyData.title} onChange={handleTitleChange} />
         </label>
+        
+        {/* Add input fields for results */}
+        {['A', 'B', 'C', 'D', 'E'].map((resultLetter, resultIndex) => (
+          <div key={resultIndex}>
+            <label>
+              {`Result ${resultLetter}`}:
+              <input type="text" value={surveyData[`result${resultLetter}`]} onChange={(event) => handleResultChange(event, resultIndex)} />
+            </label>
+          </div>
+        ))}
+
+        {/* Add, delete question buttons */}
         {surveyData.questions.map((question, index) => (
           <div key={index}>
             <label>
@@ -84,23 +97,12 @@ function CreateSurvey() {
             <button type="button" onClick={() => handleRemoveQuestion(index)}>Remove Question</button>
           </div>
         ))}
-        <button type="button" onClick={handleAddQuestion}>Add Question</button>
         
-        {/* Add input fields for results */}
-        {surveyData.results.map((result, resultIndex) => (
-          <div key={resultIndex}>
-            <label>
-              {`Result ${String.fromCharCode(65 + resultIndex)}`}:
-              <input type="text" value={result} onChange={(event) => handleResultChange(event, resultIndex)} />
-            </label>
-          </div>
-        ))}
-
+        <button type="button" onClick={handleAddQuestion}>Add Question</button>
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 }
-
 export default CreateSurvey;
 
