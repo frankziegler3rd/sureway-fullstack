@@ -21,7 +21,7 @@ function CreateSurvey() {
   const handleQuestionChange = (event, index) => {
     const { name, value } = event.target;
     const questions = [...surveyData.questions];
-    questions[index][name] = value;
+    questions[index] ={...questions[index], questionText: value};
     setSurveyData({ ...surveyData, questions });
   };
 
@@ -40,7 +40,7 @@ function CreateSurvey() {
   };
 
   const handleAddQuestion = () => {
-    const questions = [...surveyData.questions, { question: "", answerA: "", answerB: "", answerC: "", answerD: "" }];
+    const questions = [...surveyData.questions, { questionText: "", answerA: "", answerB: "", answerC: "", answerD: "" }];
     setSurveyData({ ...surveyData, questions, numberOfQuestions: surveyData.numberOfQuestions + 1 });
   };
   
@@ -58,7 +58,7 @@ function CreateSurvey() {
       const response = await axios.post('http://localhost:8080/create-survey', surveyData);
       console.log('Survey submitted:', response.data);
     } catch (error) {
-      console.error('Error submitting survey:', error);
+      console.error('Error submitting survey:', error.response.data);
     }
   };
 
@@ -87,7 +87,7 @@ function CreateSurvey() {
     <div key={index}>
       <label>
       Question:
-      <input type="text" name="question" value={question.question} onChange={(event) => handleQuestionChange(event, index)} />
+      <input type="text" name="questionText" value={question.questionText} onChange={(event) => handleQuestionChange(event, index)} />
     </label>
     {['A', 'B', 'C', 'D'].map((letter, answerIndex) => (
       <div key={answerIndex}>
