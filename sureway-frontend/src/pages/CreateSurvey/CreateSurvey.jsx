@@ -3,7 +3,8 @@ import axios from "axios";
 
 function CreateSurvey() {
   const [surveyData, setSurveyData] = useState({
-    title: "",
+    name: "",
+    numberOfQuestions: 0,
     questions: [],
     resultA: "",
     resultB: "",
@@ -13,7 +14,7 @@ function CreateSurvey() {
   });
  
   const handleTitleChange = (event) => {
-    setSurveyData({ ...surveyData, title: event.target.value });
+    setSurveyData({ ...surveyData, name: event.target.value });
   };
 
 
@@ -27,7 +28,8 @@ function CreateSurvey() {
   const handleAnswerChange = (event, questionIndex, answerIndex) => {
     const { value } = event.target;
     const questions = [...surveyData.questions];
-    questions[questionIndex].answers[answerIndex] = value;
+    const answerKey = `answer${String.fromCharCode(65 + answerIndex)}`;
+    questions[questionIndex] = { ...questions[questionIndex], [answerKey]: value };
     setSurveyData({ ...surveyData, questions });
   };
 
@@ -38,14 +40,15 @@ function CreateSurvey() {
   };
 
   const handleAddQuestion = () => {
-    const questions = [...surveyData.questions, { question: "", answers: ["", "", "", ""] }];
-    setSurveyData({ ...surveyData, questions });
+    const questions = [...surveyData.questions, { question: "", answerA: "", answerB: "", answerC: "", answerD: "" }];
+    setSurveyData({ ...surveyData, questions, numberOfQuestions: surveyData.numberOfQuestions + 1 });
   };
-
+  
+  
   const handleRemoveQuestion = (index) => {
     const questions = [...surveyData.questions];
     questions.splice(index, 1);
-    setSurveyData({ ...surveyData, questions });
+    setSurveyData({ ...surveyData, questions, numberOfQuestions: surveyData.numberOfQuestions - 1 });
   };
 
   const handleSubmit = async (e) => {
@@ -79,25 +82,24 @@ function CreateSurvey() {
           </div>
         ))}
 
-        {/* Add, delete question buttons */}
-        {surveyData.questions.map((question, index) => (
-          <div key={index}>
-            <label>
-              Question:
-              <input type="text" name="question" value={question.question} onChange={(event) => handleQuestionChange(event, index)} />
-            </label>
-            {question.answers.map((answer, answerIndex) => (
-              <div key={answerIndex}>
-                <label>
-                  {`Answer ${String.fromCharCode(65 + answerIndex)}`}:
-                  <input type="text" value={answer} onChange={(event) => handleAnswerChange(event, index, answerIndex)} />
-                </label>
-              </div>
-            ))}
-            <button type="button" onClick={() => handleRemoveQuestion(index)}>Remove Question</button>
-          </div>
-        ))}
-        
+       {/* Add, delete question buttons */}
+  {surveyData.questions.map((question, index) => (
+    <div key={index}>
+      <label>
+      Question:
+      <input type="text" name="question" value={question.question} onChange={(event) => handleQuestionChange(event, index)} />
+    </label>
+    {['A', 'B', 'C', 'D'].map((letter, answerIndex) => (
+      <div key={answerIndex}>
+        <label>
+          {`Answer ${letter}`}:
+          <input type="text" value={question[`answer${letter}`]} onChange={(event) => handleAnswerChange(event, index, answerIndex)} />
+        </label>
+      </div>
+    ))}
+    <button type="button" onClick={() => handleRemoveQuestion(index)}>Remove Question</button>
+  </div>
+))}
         <button type="button" onClick={handleAddQuestion}>Add Question</button>
         <button type="submit">Submit</button>
       </form>
