@@ -2,7 +2,6 @@ package com.sureway.fullstackbackend.controller;
 
 import com.sureway.fullstackbackend.model.User;
 import com.sureway.fullstackbackend.repository.UserRepository;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
 
 @CrossOrigin
 @RestController

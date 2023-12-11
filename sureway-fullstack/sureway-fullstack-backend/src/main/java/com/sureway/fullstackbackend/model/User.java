@@ -3,6 +3,9 @@ package com.sureway.fullstackbackend.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import java.util.List;
 
 @Entity
 public class User {
@@ -14,6 +17,9 @@ public class User {
     private String username;
     private String email;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Survey> surveys;
 
     public String getUsername() {
         return username;
