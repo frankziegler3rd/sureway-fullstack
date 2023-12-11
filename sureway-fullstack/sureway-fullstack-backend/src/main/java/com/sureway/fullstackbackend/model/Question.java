@@ -23,7 +23,7 @@ public class Question {
 
     // The question text
     @Column(name = "question")
-    private String question;
+    private String questionText;
 
     //The four answers to the question
     @Column(name = "answer_a")
@@ -49,24 +49,24 @@ public class Question {
     @Override
     public String toString() {
         return String.format("Question[question_id=%d, question='%s', answerA='%s', answerB='%s', answerC='%s', answerD='%s']", 
-        question_id, question, answerA, answerB, answerC, answerD);
+        question_id, questionText, answerA, answerB, answerC, answerD);
     }
 
     //Contructor used to save question into the database
-    public Question(String question, String answerA, String answerB, String answerC, String answerD) {
-        this.question = question;
+    public Question(String questionText, String answerA, String answerB, String answerC, String answerD) {
+        this.questionText = questionText;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
         this.answerD = answerD;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 
 

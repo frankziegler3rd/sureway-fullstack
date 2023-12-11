@@ -3,11 +3,13 @@ package com.sureway.fullstackbackend.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,7 @@ public class Survey {
 
     @Column(name = "number_of_questions")
     private Integer numberOfQuestions;
-
+    
     //Survey results based on final answers
     @Column(name = "result_a")
     private String resultA;
@@ -44,6 +46,11 @@ public class Survey {
     // Inconclusive result
     @Column(name = "result_e")
     private String resultE;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", updatable = false)
+    private User user;
+    
 
     // // The questions in the survey for the data object
     @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -68,6 +75,10 @@ public class Survey {
         return name;
     }
 
+        public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getNumberOfQuestions() {
         return numberOfQuestions;
     }
@@ -76,7 +87,7 @@ public class Survey {
         this.questions = questions;
     }
 
-    public void setNumber_of_questions(Integer numberOfQuestions) {
+    public void setNumberOfQuestions(Integer numberOfQuestions) {
         this.numberOfQuestions = numberOfQuestions;
     }
 
@@ -124,9 +135,6 @@ public class Survey {
         return survey_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void addQuestion(Question question) {
         questions.add(question);
