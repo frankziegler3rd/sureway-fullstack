@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
 @Table(name = "survey")
 public class Survey {
@@ -23,21 +22,6 @@ public class Survey {
             updatable = false,
             nullable = false)
     private Integer survey_id;
-
-    protected Survey() {
-
-    }
-
-    public Survey(String name, Integer numberOfQuestions, ArrayList<Question> questions, String resultA, String resultB, String resultC, String resultD, String resultE) {
-        this.name = name;
-        this.numberOfQuestions = numberOfQuestions;
-        this.questions = questions;
-        this.resultA = resultA;
-        this.resultB = resultB;
-        this.resultC = resultC;
-        this.resultD = resultD;
-        this.resultE = resultE;
-    }
 
     //Survey title
     @Column(name = "name",
@@ -61,16 +45,35 @@ public class Survey {
     @Column(name = "result_e")
     private String resultE;
 
-    // The questions in the survey for the data object
+    // // The questions in the survey for the data object
     @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Question> questions = new ArrayList<>();
+
+    public Survey() {
+
+    }
+
+    public Survey(String name, Integer numberOfQuestions, ArrayList<Question> questions, String resultA, String resultB, String resultC, String resultD, String resultE) {
+        this.name = name;
+        this.numberOfQuestions = numberOfQuestions;
+        this.questions = questions;
+        this.resultA = resultA;
+        this.resultB = resultB;
+        this.resultC = resultC;
+        this.resultD = resultD;
+        this.resultE = resultE;
+    }
 
     public String getName() {
         return name;
     }
 
-    public Integer getNumber_of_questions() {
+    public Integer getNumberOfQuestions() {
         return numberOfQuestions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public void setNumber_of_questions(Integer numberOfQuestions) {
@@ -97,7 +100,7 @@ public class Survey {
         return resultC;
     }
 
-    public void setResult_c(String resultC) {
+    public void setResultC(String resultC) {
         this.resultC = resultC;
     }
 
@@ -113,7 +116,7 @@ public class Survey {
         return resultE;
     }
 
-    public void setResult_e(String resultE) {
+    public void setResultE(String resultE) {
         this.resultE = resultE;
     }
 

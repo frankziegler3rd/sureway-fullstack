@@ -5,6 +5,7 @@ import com.sureway.fullstackbackend.repository.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.sureway.fullstackbackend.service.SurveyService;
 
 @CrossOrigin
 @RestController
@@ -14,7 +15,7 @@ public class SurveyController {
     private SurveyRepository surveyRepository; // Your Survey repository
 
     @PostMapping("/create-survey")
-    public ResponseEntity<String> saveSurvey(@RequestBody Survey surveyData) {
+    public ResponseEntity<String> createSurvey(@RequestBody Survey surveyData) {
         // Save surveyData to the database using your repository
         // Example:
         surveyRepository.save(surveyData);

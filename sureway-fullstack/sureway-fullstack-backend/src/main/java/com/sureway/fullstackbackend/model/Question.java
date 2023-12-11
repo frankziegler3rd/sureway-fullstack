@@ -45,6 +45,13 @@ public class Question {
     public Question() {
     }
 
+    // return all question data as a string
+    @Override
+    public String toString() {
+        return String.format("Question[question_id=%d, question='%s', answerA='%s', answerB='%s', answerC='%s', answerD='%s']", 
+        question_id, question, answerA, answerB, answerC, answerD);
+    }
+
     //Contructor used to save question into the database
     public Question(String question, String answerA, String answerB, String answerC, String answerD) {
         this.question = question;
@@ -63,19 +70,19 @@ public class Question {
     }
 
 
-    public String answerA() {
+    public String getAnswerA() {
         return answerA;
     }
 
-    public String answerB() {
+    public String getAnswerB() {
         return answerB;
     }
 
-    public String answerC() {
+    public String getAnswerC() {
         return answerC;
     }
 
-    public String answerD() {
+    public String getAnswerD() {
         return answerD;
     }
 
